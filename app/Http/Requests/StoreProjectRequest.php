@@ -24,11 +24,10 @@ class StoreProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'project_name' =>'required|unique|max:50',
-            // 'description' =>'required'
-            // 'slug' =>
-            // 'programming_languages' =>
-            // 'start_date' =>
+            'project_name' => 'required|unique:projects|max:50|string',
+            'description' => 'required|string',
+            'programming_languages' => 'required|string',
+            'start_date' => 'required|date',
         ];
     }
 }

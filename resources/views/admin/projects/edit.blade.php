@@ -18,10 +18,6 @@
             <textarea class="form-control" id="description" rows="2" name="description">{{ old('description',$project->description) }}</textarea>
         </div>
         <div class="mb-3">
-            <label for="slug" class="form-label">Slug</label>
-            <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug',$project->slug) }}">
-        </div>
-        <div class="mb-3">
             <label for="programming_languages" class="form-label">Programmig Languages</label>
             <input type="text" class="form-control" id="programming_languages" name="programming_languages" value="{{ old('programming_languages',$project->programming_languages) }}">
         </div>
