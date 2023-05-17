@@ -80,11 +80,11 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $request->validated();
-        $data = $request->all();
-
+        $data = $request->validated();
         $project->update($data);
-        return to_route('admin.projects.index');
+        $project->slug = Str::slug($data['project_name'], '-');
+        $project->save();
+        return to_route('admin.projects.index')->with('message', "Project $project->id edited successfully!");
     }
 
     /**
