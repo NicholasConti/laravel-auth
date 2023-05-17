@@ -4,6 +4,7 @@
 <div class="container">
     <h2 class="fs-4 text-secondary my-4">
         {{ __('Dashboard') }}
+        <a href="{{ route('admin.projects.create') }}" class="btn btn-sm btn-success">Create New Project</a>
     </h2>
     <table class="table">
         <thead class="table-dark">
