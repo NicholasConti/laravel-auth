@@ -21,10 +21,14 @@
                 <td>{{$project->id}}</td>
                 <td>{{$project->project_name}}</td>
                 <td>{{$project->start_date}}</td>
-                <td>
+                <td class="d-flex gap-2">
                     <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-sm btn-primary">Show</a>
                     <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                    <a href="" class="btn btn-sm btn-danger">Delete</a>
+                    <form action="{{ route('admin.projects.destroy', $project->id)}}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                    </form>
                 </td>
               </tr>
           @endforeach
