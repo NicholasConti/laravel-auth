@@ -7,19 +7,7 @@
         <a href="{{ route('admin.projects.create') }}" class="btn btn-sm btn-success">Create New Project</a>
     </h2>
     
-    @if (session('message'))
-    <div class="toast-container position-fixed top-0 end-0 p-3">
-      <div id="liveToast" class="toast show text-bg-success" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <strong class="me-auto">Notification</strong>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-         {{session('message')}}
-        </div>
-      </div>
-    </div>
-    @endif
+    @include('partials.message')
 
     <table class="table">
         <thead class="table-dark">
@@ -55,7 +43,7 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Are you sure?
+                        Do you really want to delete this project?
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>

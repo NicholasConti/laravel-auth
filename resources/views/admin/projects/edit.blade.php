@@ -6,15 +6,9 @@
         {{ __('Edit Project') }}
         <a href="{{ route('admin.projects.index') }}" class="btn btn-sm btn-success">Home</a>
     </h2>
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+    
+    @include('partials.errors')
+
     <form action="{{ route('admin.projects.update', $project)}}" method="POST">
         @csrf
         @method('PUT')
