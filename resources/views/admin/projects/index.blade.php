@@ -39,13 +39,35 @@
                 <td class="d-flex gap-2">
                     <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-sm btn-primary">Show</a>
                     <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-sm btn-warning">Edit</a>
-                    <form action="{{ route('admin.projects.destroy', $project)}}" method="POST">
+                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#post-{{ $project->id }}">Delete</a>
+                    {{-- <form action="{{ route('admin.projects.destroy', $project)}}" method="POST">
                       @csrf
                       @method('DELETE')
                       <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                    </form>
+                    </form> --}}
                 </td>
               </tr>
+              <div class="modal fade" id="post-{{ $project->id }}" tabindex="-1"  aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Attention</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                      <form action="{{ route('admin.projects.destroy', $project)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
           @endforeach
         </tbody>
       </table>
