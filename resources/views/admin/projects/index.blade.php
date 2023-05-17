@@ -22,9 +22,9 @@
                 <td>{{$project->project_name}}</td>
                 <td>{{$project->start_date}}</td>
                 <td class="d-flex gap-2">
-                    <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-sm btn-primary">Show</a>
-                    <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                    <form action="{{ route('admin.projects.destroy', $project->id)}}" method="POST">
+                    <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-sm btn-primary">Show</a>
+                    <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-sm btn-warning">Edit</a>
+                    <form action="{{ route('admin.projects.destroy', $project)}}" method="POST">
                       @csrf
                       @method('DELETE')
                       <input type="submit" value="Delete" class="btn btn-danger btn-sm">

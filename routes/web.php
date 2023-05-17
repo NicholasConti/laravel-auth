@@ -27,7 +27,7 @@ Route::middleware('auth', 'verified')->prefix('admin')->name('admin.')->group(fu
 
     Route::get('/', [DashBoardController::class, 'index'])->name('dashboard');
 
-    Route::resource('projects', ProjectController::class);
+    Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
 
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
