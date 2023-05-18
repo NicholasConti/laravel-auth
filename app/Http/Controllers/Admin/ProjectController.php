@@ -84,7 +84,7 @@ class ProjectController extends Controller
         $project->update($data);
         $project->slug = Str::slug($data['project_name'], '-');
         $project->save();
-        return to_route('admin.projects.index')->with('message', "Project $project->id edited successfully!");
+        return to_route('admin.projects.index')->with('edit', "Project $project->id edited successfully!");
     }
 
     /**
@@ -97,6 +97,6 @@ class ProjectController extends Controller
     {
         $old_i = $project->id;
         $project->delete();
-        return to_route('admin.projects.index')->with('message', "Project $old_i deleted successfully!");;
+        return to_route('admin.projects.index')->with('delete', "Project $old_i deleted successfully!");;
     }
 }
