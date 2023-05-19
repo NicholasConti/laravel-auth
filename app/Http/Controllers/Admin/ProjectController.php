@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -44,6 +45,9 @@ class ProjectController extends Controller
         $newProject = new Project();
         $newProject->fill($data);
         $newProject->slug = Str::slug($data['project_name'], '-');
+        if (isset($data['image'])) {
+            $newProject->image = Storage::put('uploads', $data['image']);
+        }
         $newProject->save();
 
         return redirect()->route('admin.projects.index')->with('message', 'Project created successfully!');

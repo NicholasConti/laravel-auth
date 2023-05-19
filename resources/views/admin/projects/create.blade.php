@@ -8,7 +8,7 @@
 
     @include('partials.errors')
     
-   <form action="{{ route('admin.projects.store')}}" method="POST">
+   <form action="{{ route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
         <label for="project_name" class="form-label">Project Name</label>
@@ -25,6 +25,10 @@
     <div class="mb-3">
         <label for="start_date" class="form-label">Start Date</label>
         <input type="date" class="form-control @error('start_date') is-invalid @enderror" id="start_date" name="start_date" value="{{ old('start_date') }}">
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input class="form-control" type="file" id="image" name="image">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>
