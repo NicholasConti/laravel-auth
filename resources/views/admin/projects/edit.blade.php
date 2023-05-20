@@ -9,7 +9,7 @@
     
     @include('partials.errors')
 
-    <form action="{{ route('admin.projects.update', $project)}}" method="POST">
+    <form action="{{ route('admin.projects.update', $project)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="mb-3">
@@ -27,6 +27,20 @@
         <div class="mb-3">
             <label for="start_date" class="form-label">Start Date</label>
             <input type="date" class="form-control @error('start_date') is-invalid @enderror" id="start_date" name="start_date" value="{{ old('start_date',$project->start_date) }}">
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="set_image" name="set_image" value="1" @if($project->image) checked @endif>
+            <label class="form-check-label" for="set_image">Upload Image?</label>
+          </div>
+        <div class="mb-3 @if(!$project->image) d-none @endif"  id="image-input-container">
+            <!-- upload preview -->
+            <div class="preview">
+                <img id="file-image-preview" @if($project->image) src="{{ asset('storage/' . $project->image) }}" @endif>
+            </div>
+            <!-- /upload preview -->
+
+            <label for="image" class="form-label">Image</label>
+            <input class="form-control" type="file" id="image" name="image">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         </form>

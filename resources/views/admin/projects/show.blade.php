@@ -18,6 +18,7 @@
         <h6 class="card-subtitle mb-2 text-body-secondary">Started: {{ $project->start_date}}</h6>
       </div>
     </div>
+    <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-sm btn-warning">Edit</a>
     
 </div>
 @endsection

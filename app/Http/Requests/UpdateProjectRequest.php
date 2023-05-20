@@ -35,6 +35,8 @@ class UpdateProjectRequest extends FormRequest
             'description' => 'required|string',
             'programming_languages' => 'required|string',
             'start_date' => 'required|date',
+            'image' => 'nullable|image',
+            'set_image' => 'boolean'
         ];
     }
 }

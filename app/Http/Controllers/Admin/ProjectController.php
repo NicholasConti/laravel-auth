@@ -85,9 +85,22 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
-        $project->update($data);
+
         $project->slug = Str::slug($data['project_name'], '-');
-        $project->save();
+        if (empty($data['set_image'])) {
+            if ($project->image) {
+                Storage::delete($project->image);
+                $project->image = null;
+            }
+        } else {
+            if (isset($data['image'])) {
+                if ($project->image) {
+                    Storage::delete($project->image);
+                }
+                $project->image = Storage::put('uploads', $data['image']);
+            }
+        }
+        $project->update($data);
         return to_route('admin.projects.index')->with('edit', "Project $project->id edited successfully!");
     }
 
@@ -100,6 +113,9 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $old_i = $project->id;
+        if ($project->image) {
+            Storage::delete($project->image);
+        }
         $project->delete();
         return to_route('admin.projects.index')->with('delete', "Project $old_i deleted successfully!");;
     }

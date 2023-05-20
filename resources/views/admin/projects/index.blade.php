@@ -22,7 +22,7 @@
           @foreach ($projects as $project)
               <tr>
                 <td>{{$project->id}}</td>
-                <td>{{$project->project_name}}</td>
+                <td>{{$project->project_name}} @if ($project->image) <span class="badge text-bg-info">Image</span> @endif</td>
                 <td>{{$project->start_date}}</td>
                 <td class="d-flex gap-2">
                     <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-sm btn-primary">Show</a>

@@ -8,8 +8,26 @@ import.meta.glob([
 
 //PREVIEW IMAGE
 
+
+
+const imageInputContainer = document.querySelector('#image-input-container');
 const imageInput = document.querySelector('#image');
+const setImageInput = document.getElementById('set_image');
+
 imageInput.addEventListener('change', showPreview);
+setImageInput.addEventListener('change', function () {
+    if (setImageInput.checked) {
+        //true
+        imageInputContainer.classList.remove('d-none');
+        imageInputContainer.classList.add('d-block');
+    } else {
+        //false
+        imageInputContainer.classList.remove('d-block');
+        imageInputContainer.classList.add('d-none');
+    }
+});
+
+
 
 
 function showPreview(event) {
