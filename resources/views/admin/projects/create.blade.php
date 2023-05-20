@@ -29,6 +29,11 @@
     <div class="mb-3">
         <label for="image" class="form-label">Image</label>
         <input class="form-control" type="file" id="image" name="image">
+         <!-- image preview -->
+         <div class="preview">
+            <img id="file-image-preview" class="img-thumbnail">
+        </div>
+        <!-- /image preview -->
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>
